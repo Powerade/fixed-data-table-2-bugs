@@ -27,7 +27,8 @@ class InputCell extends Component {
 
 class App extends Component {
   state = {
-    inputText: {}
+    inputText: {},
+    inputText2: {},
   };
 
   onInputChange = (rowIndex, value) => {
@@ -39,6 +40,16 @@ class App extends Component {
       }
     }));
   };
+
+    onInput2Change = (rowIndex, value) => {
+        console.log(rowIndex, value, this.state);
+        this.setState(state => ({
+            inputText: {
+                ...state.inputText,
+                [rowIndex]: value
+            }
+        }));
+    };
 
   render() {
     return (
@@ -63,85 +74,22 @@ class App extends Component {
             }}
             width={200}
           />
+        </Table>
+        <Table
+          rowHeight={50}
+          rowsCount={rows.length}
+          width={1024}
+          height={300}
+          bufferRowCount={20}
+          headerHeight={50}
+        >
           <Column
             header={<Cell>Col 3</Cell>}
             cell={({ rowIndex }) => {
               return (
                 <InputCell
-                  inputText={this.state.inputText[rowIndex]}
-                  onInputChange={val => this.onInputChange(rowIndex, val)}
-                />
-              );
-            }}
-            width={200}
-          />
-          <Column
-            header={<Cell>Col 3</Cell>}
-            cell={({ rowIndex }) => {
-              return (
-                <InputCell
-                  inputText={this.state.inputText[rowIndex]}
-                  onInputChange={val => this.onInputChange(rowIndex, val)}
-                />
-              );
-            }}
-            width={200}
-          />
-          <Column
-            header={<Cell>Col 3</Cell>}
-            cell={({ rowIndex }) => {
-              return (
-                <InputCell
-                  inputText={this.state.inputText[rowIndex]}
-                  onInputChange={val => this.onInputChange(rowIndex, val)}
-                />
-              );
-            }}
-            width={200}
-          />
-          <Column
-            header={<Cell>Col 3</Cell>}
-            cell={({ rowIndex }) => {
-              return (
-                <InputCell
-                  inputText={this.state.inputText[rowIndex]}
-                  onInputChange={val => this.onInputChange(rowIndex, val)}
-                />
-              );
-            }}
-            width={200}
-          />
-          <Column
-            header={<Cell>Col 3</Cell>}
-            cell={({ rowIndex }) => {
-              return (
-                <InputCell
-                  inputText={this.state.inputText[rowIndex]}
-                  onInputChange={val => this.onInputChange(rowIndex, val)}
-                />
-              );
-            }}
-            width={200}
-          />
-          <Column
-            header={<Cell>Col 3</Cell>}
-            cell={({ rowIndex }) => {
-              return (
-                <InputCell
-                  inputText={this.state.inputText[rowIndex]}
-                  onInputChange={val => this.onInputChange(rowIndex, val)}
-                />
-              );
-            }}
-            width={200}
-          />
-          <Column
-            header={<Cell>Col 3</Cell>}
-            cell={({ rowIndex }) => {
-              return (
-                <InputCell
-                  inputText={this.state.inputText[rowIndex]}
-                  onInputChange={val => this.onInputChange(rowIndex, val)}
+                  inputText={this.state.inputText2[rowIndex]}
+                  onInputChange={val => this.onInput2Change(rowIndex, val)}
                 />
               );
             }}
